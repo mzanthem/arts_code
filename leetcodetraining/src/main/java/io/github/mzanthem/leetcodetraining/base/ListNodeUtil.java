@@ -1,5 +1,7 @@
 package io.github.mzanthem.leetcodetraining.base;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @Date 2019/10/7 4:51 PM
  * @Version 1.0
  **/
+@Slf4j
 public class ListNodeUtil {
 
     // 增
@@ -52,6 +55,7 @@ public class ListNodeUtil {
         return clone;
     }
 
+
     // 查
     /**
      * 查找最后一个节点
@@ -73,11 +77,10 @@ public class ListNodeUtil {
     }
 
     /**
-     * 打印
+     * 导出
+     * -->打印
      **/
-    public static void print(ListNode listNode) {
-
-
+    public static String toString(ListNode listNode) {
         StringBuilder stringBuilder = new StringBuilder();
         // 打印队首
         stringBuilder.append("[").append(listNode.val);
@@ -92,27 +95,36 @@ public class ListNodeUtil {
         // 打印结束
         stringBuilder.append("]");
 
-        System.out.println(stringBuilder.toString());
+        log.info(stringBuilder.toString());
+        return stringBuilder.toString();
+    }
+    /**
+     * 打印
+     **/
+    public static void print(ListNode listNode) {
+
+        System.out.println(toString(listNode));
     }
 
     // 增
     /**
      * 添加一个节点到队尾
+     * 可以链式添加
      **/
     public static ListNode append(ListNode listNode, int x) {
         ListNode end = new ListNode(x);
 
-        ListNode nextNode = listNode;
+        ListNode cursorNode = listNode;
 
         // 遍历
-        while (nextNode != null) {
+        while (cursorNode != null) {
             // 检测下一个是否为null
-            if (nextNode.next == null) {
+            if (cursorNode.next == null) {
                 // null 则把end添加到队尾,并退出循环
-                nextNode.next = end;
+                cursorNode.next = end;
                 break;
             } else {
-                nextNode = nextNode.next;
+                cursorNode = cursorNode.next;
             }
 
         }
@@ -123,50 +135,45 @@ public class ListNodeUtil {
 
     /**
      * 添加一个节点到队首
+     * 因为是单向链表，只能返回一个新的链表
      **/
     public static ListNode addFirst(ListNode listNode, int x) {
         ListNode first = new ListNode(x);
-        first.next = listNode;
+        ListNode clone = clone(listNode);
+
+        first.next = clone;
 
         return first;
     }
 
+    /**
+     * 删除末尾元素
+     **/
+    public static ListNode deleteTail(ListNode listNode) {
+
+        ListNode cursorNode = listNode;
+
+        if (cursorNode.next == null) {
+            throw new IndexOutOfBoundsException("Only Root Element!");
+        }
+
+        // 遍历
+        while (cursorNode != null) {
+            // 检测下一个的下一个是否为null()
+            if (cursorNode.next.next == null) {
+                // null 则把end添加到队尾,并退出循环
+                cursorNode.next = null;
+                break;
+            } else {
+                cursorNode = cursorNode.next;
+            }
+
+        }
 
 
-
-    public static void main(String[] args) {
-
-        System.out.println("----------- build ------------");
-        ListNode a = build(new int[]{1,1,2,4});
-        print(a);
-
-        System.out.println("----------- clone ------------");
-        ListNode b = clone(a);
-        print(b);
-
-        print(a);
-
-        System.out.println("----------- append ------------");
-
-        ListNode l = new ListNode(1);
-        print(l);
-
-//        l.next = new ListNode(2);
-        l = append(l, 2);
-        print(l);
-
-        System.out.println("----------- addFirst ------------");
-        l = addFirst(l,0);
-        print(l);
-
-        l = append(l, 3);
-        print(l);
-
-
-        System.out.println("----------- getEnd ------------");
-        ListNode e = getEnd(l);
-        print(e);
-        print(l);
-
+        return listNode;
     }
+
+
+    
 }
