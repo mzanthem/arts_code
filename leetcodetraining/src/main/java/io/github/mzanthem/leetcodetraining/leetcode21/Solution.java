@@ -1,4 +1,4 @@
-package io.github.mzanthem.leetcodetraining.intro;
+package io.github.mzanthem.leetcodetraining.leetcode21;
 
 import io.github.mzanthem.leetcodetraining.base.ListNode;
 

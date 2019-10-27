@@ -12,6 +12,7 @@ public class ListNodeUtilTest {
     ListNode listNode;
     int[] array;
     String result;
+
     @Before
     public void setUp() throws Exception {
         array = new int[]{1,2,3,4,5};
@@ -27,15 +28,31 @@ public class ListNodeUtilTest {
 
 
     @Test
+    public void convert() {
+
+        ListNode la = ListNodeUtil.convert(3);
+        String expectA = "[3]";
+        assertEquals(expectA, ListNodeUtil.toString(la));
+
+        ListNode lb = ListNodeUtil.convert(12345);
+        String expectB = "[5 -> 4 -> 3 -> 2 -> 1]";
+        assertEquals(expectB, ListNodeUtil.toString(lb));
+    }
+
+    @Test
     public void build() {
         int[] a = new int[] {1};
         ListNode la = ListNodeUtil.build(a);
         assertEquals("[1]", ListNodeUtil.toString(la));
 
 
-        int[] b= new int[] {1,1};
+        int[] b = new int[] {1,1};
         ListNode lb = ListNodeUtil.build(b);
         assertEquals("[1 -> 1]", ListNodeUtil.toString(lb));
+
+        int[] c = new int[] {1,1,2,3,5};
+        ListNode lc = ListNodeUtil.build(c);
+        assertEquals("[1 -> 1 -> 2 -> 3 -> 5]", ListNodeUtil.toString(lc));
     }
 
     @Test
@@ -59,6 +76,20 @@ public class ListNodeUtilTest {
         assertEquals(ListNodeUtil.toString(expect), ListNodeUtil.toString(e));
 
         assertEquals(result, ListNodeUtil.toString(listNode));
+    }
+
+    @Test
+    public void toStringTest() {
+        String expect= "[1 -> 1 -> 2 -> 3 -> 5]";
+        ListNode listNode = ListNodeUtil.build(new int[] {1, 1, 2, 3, 5});
+        assertEquals(expect, ListNodeUtil.toString(listNode));
+    }
+
+    @Test
+    public void toNumber() {
+        int number = 12345;
+        ListNode listNode = ListNodeUtil.build(new int[] {5, 4, 3, 2, 1});
+        assertEquals(number, ListNodeUtil.toNumber(listNode));
     }
 
     @Test

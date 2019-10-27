@@ -16,7 +16,43 @@ public class ListNodeUtil {
 
     // 增
     /**
-     * 生成一个单链表
+     * 整数，逆序存储
+     * 123 -> [3,2,1] -> [3 -> 2 -> 1]
+     **/
+    public static ListNode convert(int number) {
+
+
+        String s = String.valueOf(number);
+        int length = s.length();
+
+        if (length == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        // 获取最后位
+        char last = s.charAt(length - 1);
+        ListNode listNode = new ListNode(Integer.parseInt(String.valueOf(last)));
+
+        // 大于一位
+        if (length > 1) {
+            ListNode cursour = listNode;
+            // 逆序排列
+            for (int i = length - 2 ; i >= 0; i--) {
+                char c = s.charAt(i);
+                ListNode node = new ListNode(Integer.parseInt(String.valueOf(c)));
+                cursour.next = node;
+
+                cursour = cursour.next;
+            }
+        }
+
+        return listNode;
+    }
+
+
+
+    /**
+     * 根据数组, [正序]生成一个单链表
      * [1,1,2,4] -> [1 -> 1 -> 2 -> 4]
      **/
     public static ListNode build(int[] array) {
@@ -27,8 +63,12 @@ public class ListNodeUtil {
 
         ListNode listNode = new ListNode(array[0]);
 
+        ListNode cursor = listNode;
         for(int i = 1; i < array.length; i++) {
-            listNode = append(listNode, array[i]);
+            ListNode node = new ListNode(array[i]);
+            cursor.next = node;
+            cursor = cursor.next;
+
         }
 
         return listNode;
@@ -98,6 +138,33 @@ public class ListNodeUtil {
         log.info(stringBuilder.toString());
         return stringBuilder.toString();
     }
+
+    /**
+     * 逆序产生整数
+     * [1->2->3] ==>> "123" ==>> 321
+     * 非0
+     * TODO
+     **/
+    public static int toNumber(ListNode listNode) {
+        StringBuilder stringBuilder = new StringBuilder();
+        // 打印队首
+        stringBuilder.append(listNode.val);
+
+        ListNode nextNode = listNode.next;
+        // 遍历节点
+        while (nextNode != null) {
+            stringBuilder.append(nextNode.val);
+            nextNode = nextNode.next;
+        }
+
+        String str = stringBuilder.reverse().toString();
+        // reverse
+        log.info(str);
+
+        Integer number = Integer.parseInt(str);
+        return number;
+    }
+
     /**
      * 打印
      **/
@@ -175,5 +242,5 @@ public class ListNodeUtil {
     }
 
 
-    
+
 }
