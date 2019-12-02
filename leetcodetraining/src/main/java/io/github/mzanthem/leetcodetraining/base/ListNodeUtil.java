@@ -2,8 +2,6 @@ package io.github.mzanthem.leetcodetraining.base;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
-
 /**
  * @ClassName ListNodeUtil
  * @Description help to generate a listNode
