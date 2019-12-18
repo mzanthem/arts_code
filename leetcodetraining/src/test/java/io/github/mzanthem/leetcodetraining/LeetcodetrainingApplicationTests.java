@@ -13,4 +13,5 @@ public class LeetcodetrainingApplicationTests {
 	public void contextLoads() {
 	}
 
+	
 }
