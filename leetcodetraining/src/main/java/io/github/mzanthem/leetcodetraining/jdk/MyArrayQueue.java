@@ -19,8 +19,8 @@ public class MyArrayQueue {
 	private int[] array;
 	private int size;
 	
-	public MyArrayQueue(int capicity) {
-		array = new int[capicity];
+	public MyArrayQueue(int capacity) {
+		array = new int[capacity];
 	}
 	
 	

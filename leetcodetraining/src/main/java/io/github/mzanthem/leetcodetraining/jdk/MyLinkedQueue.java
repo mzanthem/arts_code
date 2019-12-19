@@ -10,6 +10,9 @@ package io.github.mzanthem.leetcodetraining.jdk;
 *  （1）通过数组实现一个队列；
 *  （2）通过集合实现一个对列；
 *  （3）通过两个堆栈实现一个队列
+ *
+ *
+ *  - 通过链表实现一个queue
 * LIFO 队列
 * @time: 下午3:52:17
 * @author mazan

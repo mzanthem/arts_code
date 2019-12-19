@@ -1,6 +1,7 @@
 package io.github.mzanthem.leetcodetraining.base;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @ClassName ListNodeUtil
@@ -9,9 +10,9 @@ import lombok.extern.slf4j.Slf4j;
  * @Date 2019/10/7 4:51 PM
  * @Version 1.0
  **/
-@Slf4j
 public class ListNodeUtil {
 
+    private static final Logger log = LoggerFactory.getLogger(ListNodeUtil.class);
     // 增
     /**
      * 整数，逆序存储
@@ -204,11 +205,11 @@ public class ListNodeUtil {
      **/
     public static ListNode addFirst(ListNode listNode, int x) {
         ListNode first = new ListNode(x);
-        ListNode clone = clone(listNode);
 
-        first.next = clone;
+        first.next = listNode;
+        listNode = first;
 
-        return first;
+        return listNode;
     }
 
     /**
