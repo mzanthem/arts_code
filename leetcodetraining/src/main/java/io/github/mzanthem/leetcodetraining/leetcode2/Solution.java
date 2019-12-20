@@ -22,6 +22,9 @@ package io.github.mzanthem.leetcodetraining.leetcode2;
  * Explanation: 342 + 465 = 807.
  */
 
+import io.github.mzanthem.leetcodetraining.base.ListNode;
+import io.github.mzanthem.leetcodetraining.base.ListNodeUtil;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -32,5 +35,45 @@ package io.github.mzanthem.leetcodetraining.leetcode2;
  */
 public class Solution {
 
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
+        ListNode dummyHead = new ListNode(0); // 存储表头(最低位)
+        ListNode p = l1;
+        ListNode q = l2;
+        ListNode curr = dummyHead;
+
+        int carry = 0; //进位
+
+        while (p != null || q != null) {
+            int x = p!=null? p.val : 0;  // x
+            int y = q!=null? q.val : 0;  // y
+            int sum = carry + x + y; // 加上上次的进位
+            carry = sum/10; // 是否进位
+
+            // 形成新的节点
+
+            curr.next = new ListNode(sum % 10); // 去除掉进位后的值
+
+            // 右移(向高位)
+            curr = curr.next;
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
+
+        }
+        if (carry > 0) {
+            curr.next = new ListNode(carry); // 最高位
+        }
+        return dummyHead.next; //
+
+    }
+
+
+    public static void main(String[] args) {
+        ListNode l1 = ListNodeUtil.build(new int[]{2, 4, 3});
+        ListNode l2 = ListNodeUtil.build(new int[]{5, 6, 4});
+
+        ListNode res = addTwoNumbers(l1, l2);
+
+        ListNodeUtil.print(res);
+    }
 }
