@@ -27,6 +27,19 @@ public class HashMapTest {
 			System.out.println("key:" + key + " , value :" + value);
 			
 		}
+
+		int cap = 13;
+		int n = cap - 1;
+		int n1 = (n >>> 1);
+		int n11 = n |= n1;
+		System.out.println(n11);
+
+		n |= n >>> 1;
+		n |= n >>> 2;
+		n |= n >>> 4;
+		n |= n >>> 8;
+		n |= n >>> 16;
+		System.out.println(n);
 	}
 
 }
