@@ -26,5 +26,14 @@ public class Steamtest {
                 .sorted()
                 .filter(x -> x.contains("五"))
                 .forEach(System.out::println);
+
+        System.out.println("---------------");
+        data.stream()
+            .peek( x -> x = x + "1")
+            .filter(x ->x.startsWith("张三"));
+
+        data.forEach(System.out::println);
+
     }
+
 }
