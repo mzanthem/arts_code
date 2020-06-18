@@ -25,7 +25,7 @@ public class SkipList <T>{
     }
     /**
      * 清空跳跃表
-     * */
+     */
     public void clear(){
         head=new SkipListNode<T>(SkipListNode.HEAD_KEY, null);
         tail=new SkipListNode<T>(SkipListNode.TAIL_KEY, null);
@@ -42,7 +42,7 @@ public class SkipList <T>{
     }
     /**
      *  在最下面一层，找到要插入的位置前面的那个key
-     * */
+     */
     private SkipListNode<T> findNode(int key){
         SkipListNode<T> p=head;
         while(true){
@@ -60,7 +60,7 @@ public class SkipList <T>{
     }
     /**
      *  查找是否存储key，存在则返回该节点，否则返回null
-     * */
+     */
     public SkipListNode<T> search(int key){
         SkipListNode<T> p=findNode(key);
         if (key==p.getKey()) {
@@ -72,7 +72,8 @@ public class SkipList <T>{
     /**
      *  向跳跃表中添加key-value
      * 
-     * */
+     *
+     */
     public void put(int k,T v){
         SkipListNode<T> p=findNode(k);
         //如果key值相同，替换原来的vaule即可结束
@@ -119,21 +120,21 @@ public class SkipList <T>{
     }
     /**
      *  水平双向连接
-     * */
+     */
     private void horizontalLink(SkipListNode<T> node1,SkipListNode<T> node2){
         node1.right=node2;
         node2.left=node1;
     }
     /**
      *  垂直双向连接
-     * */
+     */
     private void vertiacallLink(SkipListNode<T> node1,SkipListNode<T> node2){
         node1.down=node2;
         node2.up=node1;
     }
     /**
      *  打印出原始数据
-     * */
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub

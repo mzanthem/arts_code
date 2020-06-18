@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * @Author zan.ma
  * @Date 2019/10/7 4:51 PM
  * @Version 1.0
- **/
+ */
 public class ListNodeUtil {
 
     private static final Logger log = LoggerFactory.getLogger(ListNodeUtil.class);
@@ -17,7 +17,7 @@ public class ListNodeUtil {
     /**
      * 整数，逆序存储
      * 123 -> [3,2,1] -> [3 -> 2 -> 1]
-     **/
+     */
     public static ListNode convert(int number) {
 
 
@@ -53,7 +53,7 @@ public class ListNodeUtil {
     /**
      * 根据数组, [正序]生成一个单链表
      * [1,1,2,4] -> [1 -> 1 -> 2 -> 4]
-     **/
+     */
     public static ListNode build(int[] array) {
         int size = array.length;
         if (size == 0) {
@@ -75,7 +75,7 @@ public class ListNodeUtil {
 
     /**
      * 克隆一个链表
-     **/
+     */
     public static ListNode clone (ListNode listNode) {
         ListNode clone = new ListNode(listNode.val);
 
@@ -98,7 +98,7 @@ public class ListNodeUtil {
     // 查
     /**
      * 查找最后一个节点
-     **/
+     */
     public static ListNode getEnd(ListNode listNode){
         ListNode end = new ListNode(listNode.val);
 
@@ -118,7 +118,7 @@ public class ListNodeUtil {
     /**
      * 导出
      * -->打印
-     **/
+     */
     public static String toString(ListNode listNode) {
         StringBuilder stringBuilder = new StringBuilder();
         // 打印队首
@@ -143,7 +143,7 @@ public class ListNodeUtil {
      * [1->2->3] ==>> "123" ==>> 321
      * 非0
      * TODO
-     **/
+     */
     public static int toNumber(ListNode listNode) {
         StringBuilder stringBuilder = new StringBuilder();
         // 打印队首
@@ -166,7 +166,7 @@ public class ListNodeUtil {
 
     /**
      * 打印
-     **/
+     */
     public static void print(ListNode listNode) {
 
         System.out.println(toString(listNode));
@@ -176,7 +176,7 @@ public class ListNodeUtil {
     /**
      * 添加一个节点到队尾
      * 可以链式添加
-     **/
+     */
     public static ListNode append(ListNode listNode, int x) {
         ListNode end = new ListNode(x);
 
@@ -202,7 +202,7 @@ public class ListNodeUtil {
     /**
      * 添加一个节点到队首
      * 因为是单向链表，只能返回一个新的链表
-     **/
+     */
     public static ListNode addFirst(ListNode listNode, int x) {
         ListNode first = new ListNode(x);
 
@@ -214,7 +214,7 @@ public class ListNodeUtil {
 
     /**
      * 删除末尾元素
-     **/
+     */
     public static ListNode deleteTail(ListNode listNode) {
 
         ListNode cursorNode = listNode;
